@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record model="ir.ui.view" id="product_upload_meli_oerp_prices_view_form">
+		<field name="name">product.upload_meli_oerp.prices.view.form</field>
+		<field name="model">product.upload_meli_oerp.prices</field>
+		<field name="arch" type="xml">
+			<form string="Archivo de precios Mercadolibre">
+				<header>
+					<button name="btn_process" type="object" string="Procesar" states="draft" />
+					<field name="state" widget="statusbar" />
+				</header>
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="product_file" widget="binary"/>
+						<field name="delimiter" />
+					</group>
+					<notebook>
+						<page string="Contenidos" >
+							<field name="file_content" readonly="1"/>
+						</page>
+						<page string="No procesados">
+							<field name="not_processed_content" readonly="1"/>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="product_upload_meli_oerp_prices_tree">
+		<field name="name">product.upload_meli_oerp.prices.view.tree</field>
+		<field name="model">product.upload_meli_oerp.prices</field>
+		<field name="arch" type="xml">
+		<tree string="Planta">
+			<field name="name" />
+			<field name="product_file" />
+			<field name="state" />
+		</tree>
+		</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="action_product_upload_meli_oerp_prices">
+		<field name="name">Actualizar Precios</field>
+		<field name="res_model">product.upload_meli_oerp.prices</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+
+	<menuitem name="Archivo de precios Mercadolibre " id="product_upload_meli_oerp_prices_menu"
+		parent="sale.product_menu_catalog"
+		action="action_product_upload_meli_oerp_prices"
+		sequence="100"/>
+
+</odoo>

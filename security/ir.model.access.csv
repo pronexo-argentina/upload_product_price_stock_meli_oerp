@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_upload_prices,access_product_upload_prices,model_product_upload_meli_oerp_prices,base.group_user,1,1,1,1
