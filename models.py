@@ -42,9 +42,11 @@ class ProductUploadPrices(models.Model):
                 meli_price = lista[2].replace("\"","")
                 meli_available_quantity = lista[3].replace("\"","")
                 product_product = self.env['product.product'].search([('default_code','=',default_code)])
+                product_template = self.env['product.template'].search([('default_code','=',default_code)])
                 if product_product:
                     product_product.meli_price = meli_price
                     product_product.meli_available_quantity = meli_available_quantity
+                    product_template.meli_price = meli_price
                 else:
                     not_processed_content = self.not_processed_content or '' + line or '' + '\n'
                     self.not_processed_content = not_processed_content
