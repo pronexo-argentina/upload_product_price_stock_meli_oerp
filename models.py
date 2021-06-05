@@ -3,13 +3,8 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 import base64
-import csv
 from datetime import date, datetime
-from datetime import timedelta
-import pytz
-from pytz import timezone
 import logging
-import sys
 
 _logger = logging.getLogger(__name__)
 
@@ -28,7 +23,6 @@ class ProductUploadPrices(models.Model):
         if self.state != 'draft':
             raise ValidationError('Archivo procesado!')
         self.file_content = base64.b64decode(self.product_file)
-        
         lines = self.file_content.split('\n')
         for line in lines:
             lista = line.split(self.delimiter)

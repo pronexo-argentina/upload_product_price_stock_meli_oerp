@@ -33,7 +33,7 @@
 		<field name="name">product.upload_meli_oerp.prices.view.tree</field>
 		<field name="model">product.upload_meli_oerp.prices</field>
 		<field name="arch" type="xml">
-		<tree string="Planta">
+		<tree string="MLlist" default_order="name desc">
 			<field name="name" />
 			<field name="userid" />
 			<field name="product_file" />
