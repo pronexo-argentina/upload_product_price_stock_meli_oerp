@@ -21,7 +21,7 @@
 	'name': 'Actualizacion precios por archivo Para Mercadolibre meli_orp',
 	'author': "Pronexo",
     'website': "https://www.pronexo.com",
-	'version': '14.0.0.2',
+	'version': '14.0.0.3',
 	'category': 'Tools',
 	'summary': 'Actualizacion precios y stock por archivo',
 	'depends': ['web','base','meli_oerp'],

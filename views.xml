@@ -35,6 +35,7 @@
 		<field name="arch" type="xml">
 		<tree string="Planta">
 			<field name="name" />
+			<field name="userid" />
 			<field name="product_file" />
 			<field name="state" />
 		</tree>

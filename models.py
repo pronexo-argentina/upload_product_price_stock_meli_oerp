@@ -21,23 +21,18 @@ class ProductUploadPrices(models.Model):
     def btn_process(self):
         self.ensure_one()
       
-        
-        
-
         if not self.delimiter:
             raise ValidationError('Debe ingresar el delimitador')
         if not self.product_file:
             raise ValidationError('Debe seleccionar el archivo')
         if self.state != 'draft':
             raise ValidationError('Archivo procesado!')
-        #self.file_content = base64.decodestring(self.product_file)
         self.file_content = base64.b64decode(self.product_file)
         
         lines = self.file_content.split('\n')
         for line in lines:
             lista = line.split(self.delimiter)
             if len(lista) == 6:
-                #print('proceso 1')
                 default_code = lista[0].replace("\"","")
                 meli_price = lista[2].replace("\"","")
                 meli_available_quantity = lista[3].replace("\"","")
@@ -58,6 +53,7 @@ class ProductUploadPrices(models.Model):
 
 
     name = fields.Datetime(string="Fecha Hora",  default=lambda *a: datetime.now())
+    userid = fields.Char("Usuario",default=lambda self: self.env.user.name)
     product_file = fields.Binary('Archivo')
     delimiter = fields.Char('Delimitador',default=";")
     state = fields.Selection(selection=[('draft','Borrador'),('processed','Procesado')],string='Estado',default='draft')
